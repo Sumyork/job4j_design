@@ -29,17 +29,4 @@ public class CyclicIterator<T> implements Iterator<T> {
         }
         return data.get(index++);
     }
-
-    public static void main(String[] args) {
-        CyclicIterator<Integer> iterator = new CyclicIterator<>(List.of(1, 2, 3));
-        System.out.println(iterator.hasNext());
-        System.out.println(iterator.hasNext());
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-        System.out.println(iterator.hasNext());
-        System.out.println(iterator.next());
-        System.out.println(iterator.hasNext());
-        System.out.println(iterator.next());
-    }
 }
