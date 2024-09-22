@@ -14,14 +14,12 @@ public class CyclicIterator<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
-        if (data.isEmpty()) {
-            return false;
-        } else if (index == data.size()) {
+        if (index == data.size()) {
             index = 0;
         } else if (data.get(index) == null) {
             index++;
         }
-        return true;
+        return !data.isEmpty();
     }
 
     @Override
@@ -30,5 +28,18 @@ public class CyclicIterator<T> implements Iterator<T> {
             throw new NoSuchElementException();
         }
         return data.get(index++);
+    }
+
+    public static void main(String[] args) {
+        CyclicIterator<Integer> iterator = new CyclicIterator<>(List.of(1, 2, 3));
+        System.out.println(iterator.hasNext());
+        System.out.println(iterator.hasNext());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.hasNext());
+        System.out.println(iterator.next());
+        System.out.println(iterator.hasNext());
+        System.out.println(iterator.next());
     }
 }
